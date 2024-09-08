@@ -1,202 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oculte seus anúncios do Facebook</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            overflow-x: hidden;
-        }
-        h1 {
-            margin-top: 50px;
-            font-size: 2.5em;
-            color: #ff6b6b;
-            text-shadow: 2px 2px #000;
-        }
-        .container {
-            padding: 20px;
-        }
-        .text-block {
-            border: 1px solid #444;
-            border-radius: 5px;
-            padding: 20px;
-            background-color: #222;
-            min-height: 100px;
-            width: 80%;
-            margin: 20px auto;
-            box-sizing: border-box;
-            white-space: pre-wrap;
-            color: #f1f1f1;
-            font-size: 1.2em;
-            line-height: 1.5;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
-            text-align: left;
-            position: relative;
-            outline: 2px dashed #ff6b6b; /* Destaque para a área de entrada */
-        }
-        .text-block:before {
-            content: "Digite aqui";
-            color: #888;
-            font-style: italic;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-        }
-        .text-block:not(:empty)::before {
-            opacity: 0;
-        }
-        .button {
-            background-color: #00c853;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .button:hover {
-            background-color: #00a14f;
-        }
-        .footer {
-            margin-top: 60px;
-            font-size: 0.9em;
-            color: #ccc;
-        }
-        .footer a {
-            color: #ff6b6b;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        .instructions {
-            font-size: 1.2em;
-            color: #f8f8f8;
-            margin: 20px auto;
-            padding: 10px 30px;
-            border-left: 5px solid #ff6b6b;
-            text-align: left;
-            max-width: 800px;
-        }
-        .instructions h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .animated-title {
-            font-size: 2.5em;
-            margin-top: 50px;
-            color: #00d1b2;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
-        }
-        .message {
-            font-size: 1.2em;
-            color: #ffffff;
-            background-color: #00c853;
-            border: 1px solid #00a14f;
-            border-radius: 5px;
-            padding: 10px 20px;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            margin: 0;
-            font-weight: bold;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-            opacity: 0; /* Inicialmente invisível */
-            transition: opacity 0.3s ease-in-out;
-        }
-        .message.show {
-            opacity: 1; /* Torna a mensagem visível quando a classe 'show' é adicionada */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Oculte seus anúncios do Facebook</h1>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Página em Construção</title>		
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js'></script>
+		<script type='text/javascript' src='javascripts/jquery.tipsy.js'></script>
+		<script type='text/javascript'>
+		
+		
+		
+		
+		$(function() {
+			$('#tipsy').tipsy({fade: true, gravity: 's'});
+		});
+		</script>
+		
 
-        <div class="animated-title">Proteja suas campanhas!</div>
+		
+		<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+	</head>
+	<body>
+		<div class="wrapper">
+			<img class="logo" src="images/logo.png" alt="LG" title="LG"/>
+			<div class="hr"></div>
+			<h1>Desculpe, estamos passando por uma manutenção.</h1>
+			<p>É rapidinho, estamos rodando alguns procedimentos de segurança para que seus dados não se percam.</p>
+						
+						
+						
+			<script>
+				start_date = new Date("March 28, 2014 11:50:00");
+				end_date = new Date("March 28, 2015 14:00:00");
+				var start = start_date.getTime();
+				var end = end_date.getTime();
+				
+				
+				
+				window.setInterval(function(){
+						var now = +new Date;
+						restante= end - start;
+						porcentagem =  ( now - start ) / ( end - start ) * 100; //73%
+						if (porcentagem > 100) {
+							porcentagem = "100";
+						}
+						
+						if (porcentagem == 100 ) {
+							location.reload(); 
+						}
+						
+						
+						document.getElementById('tipsy').setAttribute('title',Math.round(porcentagem) + "% Completo.");
+						porcentagem = porcentagem + "%";
+						
+						document.getElementById("progress-bar").style.width=porcentagem;
+						
 
-        <div class="text-block" id="textBlock" contenteditable="true"></div>
+						
+						}, 100);
+					</script>
+			<section class="progress">
+				<div class="progress-bar-container" id="tipsy" title="99% Completo"> <!-- Edit this title for the tooltip pop up -->
+					<article id="progress-bar" class="progress-bar"   ></article> <!-- Edit the width percentage value to indicate progress -->
 
-        <button class="button" id="copyButton">Copiar Texto</button>
+				</div>
+				
+			</section>
 
-        <div class="instructions">
-            <h2>Como funciona?</h2>
-            <p>Este sistema altera os textos que você digitar para que eles sejam indetectáveis por sistemas automáticos de detecção de conteúdo, incluindo a biblioteca de anúncios do Facebook.</p>
-            <p>Isso significa que seus anúncios não aparecerão na biblioteca de anúncios do Facebook e também estarão invisíveis para plataformas de espionagem!</p>
-        </div>
 
-        <div class="footer">
-            <p>&copy; 2024 Ferramentas de Marketing Avançadas. <a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
-        </div>
-    </div>
 
-    <div class="message" id="message">Texto copiado!</div>
-
-    <script>
-        const textBlock = document.getElementById('textBlock');
-        const copyButton = document.getElementById('copyButton');
-        const message = document.getElementById('message');
-
-        // Função para transliteração
-        const transliterationMap = {
-            'A': 'А', 'K': 'К', 'H': 'Н', 'O': 'О', 'P': 'Р', 'C': 'С', 'T': 'Т', 'X': 'Х',
-            'a': 'а', 'k': 'к', 'h': 'h', 'o': 'о', 'p': 'р', 'c': 'с', 't': 'т', 'x': 'х',
-            'A': 'Α', 'K': 'Κ', 'N': 'Ν', 'O': 'Ο', 'P': 'Ρ', 'T': 'Τ', 'X': 'Χ',
-            'a': 'а', 'k': 'κ', 'n': 'n', 'o': 'ο', 'p': 'ρ', 't': 'τ', 'x': 'χ',
-        };
-
-        function transliterateText(content) {
-            let newContent = '';
-            for (let i = 0; i < content.length; i++) {
-                const char = content[i];
-                newContent += transliterationMap[char] || char; // Mantém o caractere original se não for mapeado
-            }
-            return newContent;
-        }
-
-        textBlock.addEventListener('input', function() {
-            const content = textBlock.textContent;
-            const caretPosition = window.getSelection().getRangeAt(0).startOffset; // Salva a posição do cursor
-
-            const transliteratedContent = transliterateText(content);
-
-            // Atualiza o conteúdo com transliteração
-            textBlock.textContent = transliteratedContent;
-
-            // Restaura a posição do cursor
-            const range = document.createRange();
-            const selection = window.getSelection();
-            range.setStart(textBlock.firstChild, caretPosition);
-            range.collapse(true);
-            selection.removeAllRanges();
-            selection.addRange(range);
-        });
-
-        // Função para copiar o texto
-        copyButton.addEventListener('click', function() {
-            const range = document.createRange();
-            const selection = window.getSelection();
-            range.selectNodeContents(textBlock);
-            selection.removeAllRanges();
-            selection.addRange(range);
-            document.execCommand('copy');
-            message.classList.add('show'); // Adiciona a classe 'show' para mostrar a mensagem
-            setTimeout(() => { message.classList.remove('show'); }, 2000); // Remove a classe após 2 segundos
-        });
-    </script>
-</body>
+		</div>
+	</body>
 </html>
