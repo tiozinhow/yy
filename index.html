@@ -6,115 +6,122 @@
     <title>Oculte seus anúncios do Facebook</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            font-family: 'Verdana', sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
             margin: 0;
             padding: 0;
             text-align: center;
             overflow-x: hidden;
         }
         h1 {
-            margin-top: 50px;
-            font-size: 2.5em;
-            color: #ff6b6b;
-            text-shadow: 2px 2px #000;
+            margin-top: 30px;
+            font-size: 2.8em;
+            color: #ff5722;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
         }
         .container {
             padding: 20px;
         }
         .text-block {
-            border: 1px solid #444;
-            border-radius: 5px;
-            padding: 20px;
-            background-color: #222;
-            min-height: 100px;
-            width: 80%;
-            margin: 20px auto;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #2b2b2b;
+            min-height: 120px;
+            width: 85%;
+            margin: 30px auto;
             box-sizing: border-box;
             white-space: pre-wrap;
-            color: #f1f1f1;
-            font-size: 1.2em;
-            line-height: 1.5;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+            color: #d0d0d0;
+            font-size: 1.1em;
+            line-height: 1.6;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
             text-align: left;
             position: relative;
-            outline: 2px dashed #ff6b6b; /* Destaque para a área de entrada */
+            outline: 2px dashed #ff5722; /* Destaque para a área de entrada */
+            overflow: hidden; /* Impede que o texto saia da caixa */
         }
-        .text-block:before {
+        .text-block::before {
             content: "Digite aqui";
             color: #888;
             font-style: italic;
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 15px;
+            left: 15px;
             pointer-events: none;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.3s ease;
         }
         .text-block:not(:empty)::before {
             opacity: 0;
         }
+        .text-block:focus::before {
+            opacity: 0; /* Remove o placeholder quando a caixa está em foco */
+        }
+        .text-block:empty::before {
+            opacity: 1; /* Mostra o placeholder quando a caixa está vazia */
+        }
         .button {
-            background-color: #00c853;
-            color: white;
+            background-color: #ff5722;
+            color: #ffffff;
             border: none;
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 1.2em;
             font-weight: bold;
             text-transform: uppercase;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             margin-top: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
         }
         .button:hover {
-            background-color: #00a14f;
+            background-color: #e64a19;
         }
         .footer {
             margin-top: 60px;
             font-size: 0.9em;
-            color: #ccc;
+            color: #999;
         }
         .footer a {
-            color: #ff6b6b;
+            color: #ff5722;
             text-decoration: none;
         }
         .footer a:hover {
             text-decoration: underline;
         }
         .instructions {
-            font-size: 1.2em;
-            color: #f8f8f8;
+            font-size: 1.1em;
+            color: #d0d0d0;
             margin: 20px auto;
             padding: 10px 30px;
-            border-left: 5px solid #ff6b6b;
+            border-left: 5px solid #ff5722;
             text-align: left;
             max-width: 800px;
         }
         .instructions h2 {
-            font-size: 1.5em;
+            font-size: 1.6em;
             margin-bottom: 10px;
         }
         .animated-title {
-            font-size: 2.5em;
-            margin-top: 50px;
-            color: #00d1b2;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+            font-size: 2.8em;
+            margin-top: 30px;
+            color: #4caf50;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
         }
         .message {
             font-size: 1.2em;
             color: #ffffff;
-            background-color: #00c853;
-            border: 1px solid #00a14f;
+            background-color: #ff5722;
+            border: 1px solid #e64a19;
             border-radius: 5px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             margin: 0;
             font-weight: bold;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
             opacity: 0; /* Inicialmente invisível */
             transition: opacity 0.3s ease-in-out;
         }
@@ -129,7 +136,7 @@
 
         <div class="animated-title">Proteja suas campanhas!</div>
         <h6> <div class="animated-title">beta </div></h6>
-        <div class="text-block" id="textBlock" contenteditable="true"> </div>
+        <div class="text-block" id="textBlock" contenteditable="true"></div>
 
         <button class="button" id="copyButton">Copiar Texto</button>
 
@@ -153,14 +160,11 @@
 
         // Função para transliteração
         const transliterationMap = {
-            // Latim para Cirílico (somente caracteres visualmente semelhantes)
             'A': 'А', 'K': 'К', 'H': 'Н', 'O': 'О', 'P': 'Р', 'C': 'С', 'T': 'Т', 'X': 'Х', 'E': 'Е', 'M': 'М',
             'a': 'а', 'k': 'к', 'h': 'h', 'o': 'о', 'р': 'р', 'c': 'с', 't': 't', 'x': 'х', 'e': 'е', 'm': 'm', 'ѕ': 'ѕ',
-            // Latim para Grego (somente caracteres visualmente semelhantes)
             'A': 'Α', 'K': 'Κ', 'N': 'Ν', 'O': 'Ο', 'P': 'Ρ', 'T': 'Τ', 'X': 'Χ',
             'а': 'а', 'k': 'κ', 'n': 'n', 'o': 'ο', 'р': 'ρ', 't': 't', 'x': 'х','i':'і','r':'г','y': 'у','j': 'ј', 
         };
-        // еорігуесхјѕ
         function transliterateText(content) {
             let newContent = '';
             for (let i = 0; i < content.length; i++) {
