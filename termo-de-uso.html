@@ -1,30 +1,117 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Termos de Uso do meu bot de verificação no Discord</title>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade e Termos de Serviço</title>
     <style>
-      /* CSS para estilizar a página */
-      body {
-        background-color: black;
-        color: white;
-        font-family: Arial, sans-serif;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #ff6b6b;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        p {
+            text-align: left;
+            margin: 10px 0;
+        }
+        a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+        .footer a {
+            color: #ff6b6b;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
-  </head>
-  <body>
-    <h1>Termos de Uso do meu bot de verificação no Discord</h1>
-    <p>Ao usar o meu bot de verificação no Discord, você concorda com os seguintes termos:</p>
-    <ul>
-      <li>O bot coleta apenas informações essenciais para o funcionamento adequado do bot, e nenhuma informação pessoal é armazenada.</li>
-      <li>Não é permitido o uso do bot para qualquer atividade ilegal ou prejudicial.</li>
-      <li>Não é permitido compartilhar informações confidenciais obtidas através do bot com terceiros.</li>
-      <li>Não é permitido tentar burlar ou desativar as medidas de segurança do bot.</li>
-    </ul>
-    <p>Nós nos reservamos o direito de modificar esses termos de uso a qualquer momento e a nosso exclusivo critério. Se você não concordar com esses termos, por favor, não use o bot.</p>
-  <body>
-  <!-- Conteúdo do Termo de Uso -->
-  <button onclick="window.location.href = 'https://botyuke.netlify.app/';">Voltar</button>
-</body>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="#politica-privacidade" onclick="showSection('politica-privacidade')">Política de Privacidade</a> | 
+            <a href="#termos-servico" onclick="showSection('termos-servico')">Termos de Serviço</a>
+        </div>
 
-  </body>
+        <div id="politica-privacidade" class="section">
+            <h1>Política de Privacidade</h1>
+            <h2>Coleta de Dados</h2>
+            <p>Não coletamos, armazenamos nem processamos qualquer informação pessoal ou texto que você insira em nosso site. Todas as informações fornecidas são utilizadas apenas para os fins para os quais foram inseridas e não são retidas ou utilizadas de nenhuma outra forma.</p>
+            <h2>Segurança</h2>
+            <p>Não armazenamos dados e, portanto, não há risco de comprometimento das suas informações.</p>
+            <h2>Alterações na Política</h2>
+            <p>Esta Política de Privacidade pode ser atualizada ocasionalmente para refletir mudanças nos nossos procedimentos. Recomendamos que você reveja esta política periodicamente.</p>
+            <h2>Contato</h2>
+            <p>Se você tiver dúvidas sobre nossa Política de Privacidade, entre em contato conosco através do nosso e-mail: <a href="mailto:contato@exemplo.com">contato@exemplo.com</a>.</p>
+        </div>
+
+        <div id="termos-servico" class="section">
+            <h1>Termos de Serviço</h1>
+            <h2>Aceitação dos Termos</h2>
+            <p>Ao utilizar nosso site, você concorda com os termos estabelecidos nesta página.</p>
+            <h2>Uso do Site</h2>
+            <p>Você concorda em usar nosso site apenas para os fins permitidos e em conformidade com todas as leis e regulamentos aplicáveis.</p>
+            <h2>Isenção de Responsabilidade</h2>
+            <p>Nosso site é fornecido "no estado em que se encontra", e não garantimos que o serviço estará livre de erros ou interrupções. Não somos responsáveis por quaisquer danos resultantes do uso do site.</p>
+            <h2>Alterações nos Termos</h2>
+            <p>Podemos alterar estes Termos de Serviço a qualquer momento. Recomendamos que você revise esta página periodicamente para estar ciente de qualquer modificação.</p>
+            <h2>Contato</h2>
+            <p>Se você tiver dúvidas sobre nossos Termos de Serviço, entre em contato conosco através do nosso e-mail: <a href="mailto:contato@exemplo.com">contato@exemplo.com</a>.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Seu Site. <a href="#politica-privacidade" onclick="showSection('politica-privacidade')">Política de Privacidade</a> | <a href="#termos-servico" onclick="showSection('termos-servico')">Termos de Serviço</a></p>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Exibe a seção com base no hash da URL ao carregar a página
+        window.onload = function() {
+            var hash = window.location.hash.substring(1);
+            if (hash) {
+                showSection(hash);
+            } else {
+                showSection('politica-privacidade'); // Se não houver hash, exibe a política de privacidade por padrão
+            }
+        };
+    </script>
+</body>
 </html>
