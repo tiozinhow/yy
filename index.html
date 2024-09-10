@@ -128,7 +128,7 @@
         <h1>Oculte seus anúncios do Facebook</h1>
 
         <div class="animated-title">Proteja suas campanhas!</div>
-        
+        <h6> <div class="animated-title">beta </div></h6>
         <div class="text-block" id="textBlock" contenteditable="true"> </div>
 
         <button class="button" id="copyButton">Copiar Texto</button>
@@ -155,11 +155,10 @@
         const transliterationMap = {
             // Latim para Cirílico (somente caracteres visualmente semelhantes)
             'A': 'А', 'K': 'К', 'H': 'Н', 'O': 'О', 'P': 'Р', 'C': 'С', 'T': 'Т', 'X': 'Х', 'E': 'Е', 'M': 'М',
-            'a': 'а', 'k': 'к', 'h': 'h', 'o': 'о', 'р': 'р', 'c': 'с', 't': 't', 'x': 'х', 'е': 'е', 'm': 'm',
+            'a': 'а', 'k': 'к', 'h': 'h', 'o': 'о', 'р': 'р', 'c': 'с', 't': 't', 'x': 'х', 'e': 'е', 'm': 'm', 'ѕ': 'ѕ',
             // Latim para Grego (somente caracteres visualmente semelhantes)
             'A': 'Α', 'K': 'Κ', 'N': 'Ν', 'O': 'Ο', 'P': 'Ρ', 'T': 'Τ', 'X': 'Χ',
-            'а': 'а', 'k': 'κ', 'n': 'n', 'o': 'ο', 'р': 'ρ', 't': 't', 'x': 'х','i':'і','r':'г','y': 'у','j': 'ј',
-           'ѕ': 'ѕ', 
+            'а': 'а', 'k': 'κ', 'n': 'n', 'o': 'ο', 'р': 'ρ', 't': 't', 'x': 'х','i':'і','r':'г','y': 'у','j': 'ј', 
         };
         // еорігуесхјѕ
         function transliterateText(content) {
