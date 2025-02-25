@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsGroup Finder - Encontre Grupos por Assunto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #25D366;
+            --secondary: #128C7E;
+            --accent: #FF6B6B;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gradient: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 8rem 2rem 10rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: -6rem;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--light);
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .wa-icon {
+            background: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .wa-icon span {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .search-box {
+            background: rgba(255,255,255,0.95);
+            padding: 2.5rem;
+            border-radius: 24px;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        input {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--dark);
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37,211,102,0.2);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding: 1rem;
+        }
+
+        .group-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .group-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .group-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .group-link {
+            color: var(--dark);
+            text-decoration: none;
+            word-break: break-word;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .search-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .search-btn:hover::after {
+            left: 100%;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 6rem;
+            color: #64748B;
+            padding: 2rem;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 6rem 1rem 8rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .search-box {
+                width: 100%;
+                padding: 1.5rem;
+            }
+            
+            .group-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>
+                <div class="wa-icon">
+                    <span>💬</span>
+                </div>
+                WhatsGroup Finder
+            </h1>
+            <p>Encontre grupos do WhatsApp pelo seu interesse</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="🔍 Digite o assunto (ex: renda extra, música, tecnologia...)"
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="results-grid" id="results"></div>
+    </div>
+
+    <footer>
+        <p>© 2024 WhatsGroup Finder. Não afiliado ao WhatsApp.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const resultsDiv = document.getElementById('results');
+
+        function generateSearchLink(query) {
+            const baseUrl = 'https://www.google.com/search?q=';
+            let searchParams = 'intext:https intext:chat.whatsapp.com';
+            
+            if(query.trim()) {
+                searchParams += ` intext:"${query.trim()}"`;
+            }
+            
+            return baseUrl + encodeURIComponent(searchParams);
+        }
+
+        function createGroupCard(query) {
+            const card = document.createElement('div');
+            card.className = 'group-card';
+            const searchUrl = generateSearchLink(query);
+            
+            const displayText = query.trim() 
+                ? `🔍 Pesquisa por: "${query}"` 
+                : '🌐 Todos os grupos do WhatsApp';
+            
+            card.innerHTML = `
+                <div class="group-link">${displayText}</div>
+                <button class="search-btn" onclick="window.open('${searchUrl}', '_blank')">
+                    🌐 Abrir Pesquisa
+                </button>
+            `;
+            
+            return card;
+        }
+
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value;
+            resultsDiv.innerHTML = '';
+            const card = createGroupCard(query);
+            resultsDiv.appendChild(card);
+        });
+
+        // Cria card inicial vazio
+        resultsDiv.appendChild(createGroupCard(''));
+    </script>
+</body>
+</html>
