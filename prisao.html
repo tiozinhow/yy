@@ -1,31 +1,258 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-	<title>Verificação de IP</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Nexus Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2fe;
+            --neon-pink: #fe00fe;
+            --matrix-green: #00ff9d;
+            --void-black: #0a0a0a;
+            --cyber-purple: #8a2be2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--void-black);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .cyber-bg {
+            position: fixed;
+            width: 200vw;
+            height: 200vh;
+            background: 
+                radial-gradient(circle at 20% 10%, var(--neon-blue) 0%, transparent 50%),
+                radial-gradient(circle at 80% 90%, var(--neon-pink) 0%, transparent 50%);
+            animation: cosmic-drift 120s linear infinite;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px var(--neon-blue);
+            animation: text-glow 3s ease-in-out infinite;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            padding: 4rem 0;
+        }
+
+        .cyber-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 180deg,
+                var(--neon-blue),
+                var(--neon-pink),
+                var(--matrix-green),
+                var(--neon-blue)
+            );
+            animation: rotate 6s linear infinite;
+            opacity: 0.1;
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.3);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            border-radius: 16px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: icon-pulse 2s ease-in-out infinite;
+        }
+
+        .tool-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--matrix-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-description {
+            color: #aaa;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .cyber-btn {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .cyber-btn:hover::before {
+            left: 100%;
+        }
+
+        @keyframes cosmic-drift {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-25%, -25%); }
+            50% { transform: translate(-50%, -50%); }
+            75% { transform: translate(-25%, -25%); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes text-glow {
+            0%, 100% { text-shadow: 0 0 20px var(--neon-blue); }
+            50% { text-shadow: 0 0 40px var(--neon-pink); }
+        }
+
+        @keyframes icon-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
 </head>
 <body>
-	<noscript>
-		<h1>Erro: o JavaScript está desativado.</h1>
-		<p>Para acessar este site, é necessário ativar o JavaScript no seu navegador.</p>
-	</noscript>
-	
-	<script>
-		var allowedIps = ["", ""];
-		var currentIp = "";
+    <div class="cyber-bg"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Cyber Nexus Pro</h1>
+            <p>Ferramentas de elite para domínio digital</p>
+        </header>
 
-		function checkIp() {
-			fetch("https://api.ipify.org")
-				.then(response => response.text())
-				.then(ip => {
-					currentIp = ip;
-					if (!allowedIps.includes(ip)) {
-						window.location.replace("nao.html");
-					}
-				});
-		}
+        <div class="tool-grid">
+            <!-- Ferramenta 1 -->
+            <div class="cyber-card" onclick="location.href='#ocultador'">
+                <div class="card-content">
+                    <div class="tool-icon">🛡️</div>
+                    <h3 class="tool-title">Oculte seus anúncios</h3>
+                    <p class="tool-description">
+                        Proteja suas campanhas no Facebook com nossa tecnologia de ofuscação avançada
+                    </p>
+                    <button class="cyber-btn">Proteger Campanhas</button>
+                </div>
+            </div>
 
-		checkIp();
-	</script>
+            <!-- Ferramenta 2 -->
+            <div class="cyber-card" onclick="location.href='#pesquisa'">
+                <div class="card-content">
+                    <div class="tool-icon">🔍</div>
+                    <h3 class="tool-title">Finder de Grupos</h3>
+                    <p class="tool-description">
+                        Encontre grupos no WhatsApp pelo seu interesse com busca inteligente
+                    </p>
+                    <button class="cyber-btn">Explorar Grupos</button>
+                </div>
+            </div>
+
+            <!-- Ferramenta 3 -->
+            <div class="cyber-card" onclick="location.href='#ia-telegram'">
+                <div class="card-content">
+                    <div class="tool-icon">🤖</div>
+                    <h3 class="tool-title">Neuro AI</h3>
+                    <p class="tool-description">
+                        Inteligência artificial sem censura com integração total ao Telegram
+                    </p>
+                    <button class="cyber-btn">Ativar IA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efeito de hover dinâmico
+        document.querySelectorAll('.cyber-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'rotateX(10deg) rotateY(10deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
 </body>
 </html>
